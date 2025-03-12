@@ -1,0 +1,16 @@
+{
+  "tailwindConfig": "./tailwind.config.ts",
+  "printWidth": 80,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "semi": true,
+  "tabWidth": 2,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindFunctions": [
+    "tv"
+  ]
+}
