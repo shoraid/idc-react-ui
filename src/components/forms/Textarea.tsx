@@ -34,10 +34,10 @@ export default Textarea;
 
 const styles = tv({
   base: [
-    "block w-full border text-gray-900 transition-all duration-200",
+    "block w-full border text-gray-900 placeholder-gray-400 transition-all duration-200",
     "focus:ring-4 focus:outline-none",
     "disabled:cursor-not-allowed disabled:opacity-50",
-    "dark:text-gray-100",
+    "dark:text-gray-100 dark:placeholder:text-gray-500",
   ],
   defaultVariants: {
     size: "md",
