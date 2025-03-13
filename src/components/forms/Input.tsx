@@ -34,7 +34,7 @@ export default Input;
 
 const styles = tv({
   base: [
-    "block w-full border text-gray-900 transition",
+    "block w-full border text-gray-900 transition-all duration-200",
     "focus:ring-4 focus:outline-none",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "dark:text-gray-100",
@@ -93,7 +93,6 @@ const styles = tv({
         "border-red-500 focus:border-red-600 focus:ring-red-200",
         "dark:border-red-700 dark:focus:border-red-600 dark:focus:ring-red-600/40",
       ],
-      false: "",
     },
   },
 });
