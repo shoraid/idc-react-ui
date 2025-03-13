@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Label from "./Label";
 import { Meta, StoryObj } from "@storybook/react";
 
@@ -27,22 +28,32 @@ export const Default: Story = {
   },
 };
 
-export const ExtraSmall: Story = {
-  args: { ...Default.args, size: "xs" },
-};
+const sizes = ["xs", "sm", "md", "lg"];
+const requiredStates = [false, true];
 
-export const Small: Story = {
-  args: { ...Default.args, size: "sm" },
-};
-
-export const Medium: Story = {
-  args: { ...Default.args, size: "md" },
-};
-
-export const Large: Story = {
-  args: { ...Default.args, size: "lg" },
-};
-
-export const Required: Story = {
-  args: { ...Default.args, required: true },
+export const Variants: Story = {
+  render: (args: any) => (
+    <div className="space-y-6">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-2 gap-6">
+            {requiredStates.map((required) => (
+              <div
+                key={`${size}-${required}`}
+                className="flex flex-col items-center gap-2"
+              >
+                <Label {...args} size={size} required={required}>
+                  {required ? "Required" : "Optional"}
+                </Label>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    children: "Example Label",
+  },
 };

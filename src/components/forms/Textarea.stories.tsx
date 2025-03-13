@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Textarea from "./Textarea";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Textarea> = {
-  title: "Components/Textarea",
+  title: "Components/Forms/Textarea",
   component: Textarea,
   argTypes: {
     color: {
@@ -39,6 +40,7 @@ const meta: Meta<typeof Textarea> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
@@ -54,66 +56,44 @@ export const Default: Story = {
   },
 };
 
-export const Base: Story = {
-  args: { ...Default.args, color: "base" },
-};
+const sizes = ["sm", "md", "lg"];
+const colors = [
+  "base",
+  "primary",
+  "secondary",
+  "info",
+  "success",
+  "warning",
+  "danger",
+  "light",
+  "dark",
+];
 
-export const Primary: Story = {
-  args: { ...Default.args, color: "primary" },
-};
-
-export const Secondary: Story = {
-  args: { ...Default.args, color: "secondary" },
-};
-
-export const Info: Story = {
-  args: { ...Default.args, color: "info" },
-};
-
-export const Success: Story = {
-  args: { ...Default.args, color: "success" },
-};
-
-export const Warning: Story = {
-  args: { ...Default.args, color: "warning" },
-};
-
-export const Danger: Story = {
-  args: { ...Default.args, color: "danger" },
-};
-
-export const Light: Story = {
-  args: { ...Default.args, color: "light" },
-};
-
-export const Dark: Story = {
-  args: { ...Default.args, color: "dark" },
-};
-
-export const Small: Story = {
-  args: { ...Default.args, size: "sm" },
-};
-
-export const Medium: Story = {
-  args: { ...Default.args, size: "md" },
-};
-
-export const Large: Story = {
-  args: { ...Default.args, size: "lg" },
-};
-
-export const ErrorState: Story = {
-  args: { ...Default.args, hasError: true },
-};
-
-export const Disabled: Story = {
-  args: { ...Default.args, disabled: true },
-};
-
-export const ReadOnly: Story = {
-  args: { ...Default.args, readOnly: true },
-};
-
-export const Rows: Story = {
-  args: { ...Default.args, rows: 7 },
+export const Variants: Story = {
+  render: (args: any) => (
+    <div className="space-y-6 pb-8">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-3 gap-4">
+            {colors.map((color) => (
+              <Textarea
+                key={`${size}-${color}`}
+                {...args}
+                size={size}
+                color={color}
+                placeholder={`${color} - ${size}`}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    name: "example",
+    hasError: false,
+    disabled: false,
+    readOnly: false,
+  },
 };

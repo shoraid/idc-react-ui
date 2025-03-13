@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Input from "./Input";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Input> = {
-  title: "Components/Input",
+  title: "Components/Forms/Input",
   component: Input,
   argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
     color: {
       control: "select",
       options: [
@@ -19,19 +24,9 @@ const meta: Meta<typeof Input> = {
         "dark",
       ],
     },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-    hasError: {
-      control: "boolean",
-    },
-    disabled: {
-      control: "boolean",
-    },
-    readOnly: {
-      control: "boolean",
-    },
+    hasError: { control: "boolean" },
+    disabled: { control: "boolean" },
+    readOnly: { control: "boolean" },
     type: {
       control: "select",
       options: ["text", "password", "email", "number", "search"],
@@ -40,6 +35,7 @@ const meta: Meta<typeof Input> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
@@ -55,78 +51,45 @@ export const Default: Story = {
   },
 };
 
-export const Base: Story = {
-  args: { ...Default.args, color: "base" },
-};
+const sizes = ["sm", "md", "lg"];
+const colors = [
+  "base",
+  "primary",
+  "secondary",
+  "info",
+  "success",
+  "warning",
+  "danger",
+  "light",
+  "dark",
+];
 
-export const Primary: Story = {
-  args: { ...Default.args, color: "primary" },
-};
-
-export const Secondary: Story = {
-  args: { ...Default.args, color: "secondary" },
-};
-
-export const Info: Story = {
-  args: { ...Default.args, color: "info" },
-};
-
-export const Success: Story = {
-  args: { ...Default.args, color: "success" },
-};
-
-export const Warning: Story = {
-  args: { ...Default.args, color: "warning" },
-};
-
-export const Danger: Story = {
-  args: { ...Default.args, color: "danger" },
-};
-
-export const Light: Story = {
-  args: { ...Default.args, color: "light" },
-};
-
-export const Dark: Story = {
-  args: { ...Default.args, color: "dark" },
-};
-
-export const Small: Story = {
-  args: { ...Default.args, size: "sm" },
-};
-
-export const Medium: Story = {
-  args: { ...Default.args, size: "md" },
-};
-
-export const Large: Story = {
-  args: { ...Default.args, size: "lg" },
-};
-
-export const ErrorState: Story = {
-  args: { ...Default.args, hasError: true },
-};
-
-export const Disabled: Story = {
-  args: { ...Default.args, disabled: true },
-};
-
-export const ReadOnly: Story = {
-  args: { ...Default.args, readOnly: true },
-};
-
-export const PasswordInput: Story = {
-  args: { ...Default.args, type: "password" },
-};
-
-export const EmailInput: Story = {
-  args: { ...Default.args, type: "email" },
-};
-
-export const NumberInput: Story = {
-  args: { ...Default.args, type: "number" },
-};
-
-export const SearchInput: Story = {
-  args: { ...Default.args, type: "search" },
+export const Variants: Story = {
+  render: (args: any) => (
+    <div className="space-y-6">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-3 gap-4">
+            {colors.map((color) => (
+              <Input
+                key={`${size}-${color}`}
+                {...args}
+                size={size}
+                color={color}
+                placeholder={`${color} - ${size}`}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    name: "example",
+    hasError: false,
+    disabled: false,
+    readOnly: false,
+    type: "text",
+  },
 };

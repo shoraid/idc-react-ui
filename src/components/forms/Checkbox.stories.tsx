@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Checkbox from "./Checkbox";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Checkbox> = {
-  title: "Components/Checkbox",
+  title: "Components/Forms/Checkbox",
   component: Checkbox,
   argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
     color: {
       control: "select",
       options: [
@@ -19,10 +24,6 @@ const meta: Meta<typeof Checkbox> = {
         "dark",
       ],
     },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
     hasError: {
       control: "boolean",
     },
@@ -33,70 +34,56 @@ const meta: Meta<typeof Checkbox> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {
-    name: "example",
-    color: "base",
+    name: "checkbox",
     size: "md",
+    color: "base",
     hasError: false,
     disabled: false,
   },
 };
 
-export const Base: Story = {
-  args: { ...Default.args, color: "base" },
-};
+const sizes = ["sm", "md", "lg"];
+const colors = [
+  "base",
+  "primary",
+  "secondary",
+  "info",
+  "success",
+  "warning",
+  "danger",
+  "light",
+  "dark",
+];
 
-export const Primary: Story = {
-  args: { ...Default.args, color: "primary" },
-};
-
-export const Secondary: Story = {
-  args: { ...Default.args, color: "secondary" },
-};
-
-export const Info: Story = {
-  args: { ...Default.args, color: "info" },
-};
-
-export const Success: Story = {
-  args: { ...Default.args, color: "success" },
-};
-
-export const Warning: Story = {
-  args: { ...Default.args, color: "warning" },
-};
-
-export const Danger: Story = {
-  args: { ...Default.args, color: "danger" },
-};
-
-export const Light: Story = {
-  args: { ...Default.args, color: "light" },
-};
-
-export const Dark: Story = {
-  args: { ...Default.args, color: "dark" },
-};
-
-export const Small: Story = {
-  args: { ...Default.args, size: "sm" },
-};
-
-export const Medium: Story = {
-  args: { ...Default.args, size: "md" },
-};
-
-export const Large: Story = {
-  args: { ...Default.args, size: "lg" },
-};
-
-export const ErrorState: Story = {
-  args: { ...Default.args, hasError: true },
-};
-
-export const Disabled: Story = {
-  args: { ...Default.args, disabled: true },
+export const Variants: Story = {
+  render: (args) => (
+    <div className="space-y-6">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-4 gap-4">
+            {colors.map((color) => (
+              <label
+                key={`${size}-${color}`}
+                className="flex flex-col items-center gap-2"
+              >
+                <Checkbox {...args} size={size as any} color={color as any} />
+                <span className="text-sm">{color}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    name: "checkbox",
+    hasError: false,
+    disabled: false,
+  },
 };

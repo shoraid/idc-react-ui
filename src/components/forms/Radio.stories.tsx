@@ -38,59 +38,48 @@ export const Default: Story = {
     name: "radio",
     size: "md",
     color: "base",
+    hasError: false,
+    disabled: false,
   },
 };
 
-export const WithError: Story = {
-  args: {
-    name: "radio",
-    size: "md",
-    color: "danger",
-    hasError: true,
-  },
-};
+const sizes = ["sm", "md", "lg"];
+const colors = [
+  "base",
+  "primary",
+  "secondary",
+  "info",
+  "success",
+  "warning",
+  "danger",
+  "light",
+  "dark",
+];
 
-export const Disabled: Story = {
-  args: {
-    name: "radio",
-    size: "md",
-    color: "base",
-    disabled: true,
-  },
-};
-
-export const AllSizes: Story = {
-  render: () => (
-    <div className="grid grid-cols-4 items-center gap-8">
-      {["sm", "md", "lg"].map((size) => (
-        <label key={size} className="flex flex-col items-center gap-2">
-          <Radio name="radio" id={size} size={size as any} />
-          <span className="text-lg">{size}</span>
-        </label>
+export const Variants: Story = {
+  render: (args) => (
+    <div className="space-y-6">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-4 gap-4">
+            {colors.map((color) => (
+              <label
+                key={`${size}-${color}`}
+                className="flex flex-col items-center gap-2"
+              >
+                <Radio {...args} size={size as any} color={color as any} />
+                <span className="text-sm">{color}</span>
+              </label>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   ),
-};
-
-export const AllColors: Story = {
-  render: () => (
-    <div className="grid grid-cols-4 gap-8">
-      {[
-        "base",
-        "primary",
-        "secondary",
-        "info",
-        "success",
-        "warning",
-        "danger",
-        "light",
-        "dark",
-      ].map((color) => (
-        <label key={color} className="flex flex-col items-center gap-1">
-          <Radio name="radio" id={color} size="md" color={color as any} />
-          <span className="text-lg">{color}</span>
-        </label>
-      ))}
-    </div>
-  ),
+  args: {
+    name: "radio",
+    hasError: false,
+    disabled: false,
+  },
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Hint from "./Hint";
 import { Meta, StoryObj } from "@storybook/react";
 
@@ -31,30 +32,42 @@ export const Default: Story = {
   },
 };
 
-export const ExtraSmall: Story = {
-  args: { ...Default.args, size: "xs" },
-};
+const sizes = ["xs", "sm", "md", "lg"];
+const states = [
+  { hasSuccess: false, hasError: false, label: "Default" },
+  { hasSuccess: true, hasError: false, label: "Success" },
+  { hasSuccess: false, hasError: true, label: "Error" },
+  { hasSuccess: true, hasError: true, label: "Success & Error" },
+];
 
-export const Small: Story = {
-  args: { ...Default.args, size: "sm" },
-};
-
-export const Medium: Story = {
-  args: { ...Default.args, size: "md" },
-};
-
-export const Large: Story = {
-  args: { ...Default.args, size: "lg" },
-};
-
-export const HasSuccess: Story = {
-  args: { ...Default.args, hasSuccess: true },
-};
-
-export const HasError: Story = {
-  args: { ...Default.args, hasError: true },
-};
-
-export const HasSuccessAndError: Story = {
-  args: { ...Default.args, hasSuccess: true, hasError: true },
+export const Variants: Story = {
+  render: (args) => (
+    <div className="space-y-6">
+      {sizes.map((size) => (
+        <div key={size}>
+          <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
+          <div className="grid grid-cols-4 gap-4">
+            {states.map(({ hasSuccess, hasError, label }) => (
+              <div
+                key={`${size}-${label}`}
+                className="flex flex-col items-center gap-2"
+              >
+                <Hint
+                  {...args}
+                  size={size as any}
+                  hasSuccess={hasSuccess}
+                  hasError={hasError}
+                >
+                  {label}
+                </Hint>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    children: "Example Hint",
+  },
 };

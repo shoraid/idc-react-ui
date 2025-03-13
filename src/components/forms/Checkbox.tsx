@@ -1,5 +1,5 @@
 /**
- * Do not forget to copy the checklist icon.
+ * Don't forget to copy the checklist icon.
  * The file path is: project-name/public/assets/checklist.svg
  */
 import { InputHTMLAttributes } from "react";
@@ -12,7 +12,6 @@ export interface InputProps
 }
 
 const Checkbox = ({
-  id,
   name,
   size,
   color,
@@ -24,7 +23,6 @@ const Checkbox = ({
     <input
       type="checkbox"
       name={name}
-      id={id ?? name}
       className={styles({ size, color, hasError, className })}
       {...rest}
     />
