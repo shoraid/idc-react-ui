@@ -28,13 +28,12 @@ export const Default: Story = {
   },
 };
 
-const sizes = ["xs", "sm", "md", "lg"];
 const requiredStates = [false, true];
 
 export const Variants: Story = {
   render: (args: any) => (
     <div className="space-y-6">
-      {sizes.map((size) => (
+      {meta.argTypes?.size?.options?.map((size) => (
         <div key={size}>
           <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
           <div className="grid grid-cols-2 gap-6">

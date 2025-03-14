@@ -56,27 +56,14 @@ export const Default: Story = {
   },
 };
 
-const sizes = ["sm", "md", "lg"];
-const colors = [
-  "base",
-  "primary",
-  "secondary",
-  "info",
-  "success",
-  "warning",
-  "danger",
-  "light",
-  "dark",
-];
-
 export const Variants: Story = {
   render: (args: any) => (
     <div className="space-y-6 pb-8">
-      {sizes.map((size) => (
+      {meta.argTypes?.size?.options?.map((size) => (
         <div key={size}>
           <h3 className="mb-2 text-lg font-semibold">Size: {size}</h3>
           <div className="grid grid-cols-3 gap-4">
-            {colors.map((color) => (
+            {meta.argTypes?.color?.options?.map((color) => (
               <Textarea
                 key={`${size}-${color}`}
                 {...args}

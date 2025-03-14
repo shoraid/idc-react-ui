@@ -38,7 +38,6 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    name: "example",
     color: "primary",
     size: "md",
     isLoading: false,
@@ -73,7 +72,6 @@ export const Variants: Story = {
     </div>
   ),
   args: {
-    name: "example",
     isLoading: false,
     disabled: false,
   },
