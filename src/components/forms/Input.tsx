@@ -52,31 +52,31 @@ const styles = tv({
     },
     color: {
       base: [
-        "border-gray-300 focus:border-indigo-600 focus:ring-indigo-200",
+        "border-gray-300 focus:border-indigo-400 focus:ring-indigo-200",
         "dark:border-gray-600 dark:focus:border-indigo-800 dark:focus:ring-indigo-600/40",
       ],
       primary: [
-        "border-blue-500 focus:border-blue-600 focus:ring-blue-200",
+        "border-blue-500 focus:border-blue-400 focus:ring-blue-200",
         "dark:border-blue-700 dark:focus:border-blue-600 dark:focus:ring-blue-600/40",
       ],
       secondary: [
-        "border-gray-500 focus:border-gray-600 focus:ring-gray-200",
+        "border-gray-500 focus:border-gray-400 focus:ring-gray-200",
         "dark:border-gray-700 dark:focus:border-gray-600 dark:focus:ring-gray-600/40",
       ],
       info: [
-        "border-cyan-500 focus:border-cyan-600 focus:ring-cyan-200",
+        "border-cyan-500 focus:border-cyan-400 focus:ring-cyan-200",
         "dark:border-cyan-700 dark:focus:border-cyan-600 dark:focus:ring-cyan-600/40",
       ],
       success: [
-        "border-green-500 focus:border-green-600 focus:ring-green-200",
+        "border-green-500 focus:border-green-400 focus:ring-green-200",
         "dark:border-green-700 dark:focus:border-green-600 dark:focus:ring-green-600/40",
       ],
       warning: [
-        "border-yellow-500 focus:border-yellow-600 focus:ring-yellow-200",
+        "border-yellow-500 focus:border-yellow-400 focus:ring-yellow-200",
         "dark:border-yellow-700 dark:focus:border-yellow-600 dark:focus:ring-yellow-600/40",
       ],
       danger: [
-        "border-red-500 focus:border-red-600 focus:ring-red-200",
+        "border-red-500 focus:border-red-400 focus:ring-red-200",
         "dark:border-red-700 dark:focus:border-red-600 dark:focus:ring-red-600/40",
       ],
       light: [

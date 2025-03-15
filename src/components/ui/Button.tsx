@@ -44,6 +44,13 @@ const styles = tv({
     color: "base",
   },
   variants: {
+    size: {
+      xs: "rounded-sm px-2 py-1 text-xs",
+      sm: "rounded-md px-3 py-1.5 text-sm",
+      md: "rounded-lg px-4 py-2 text-base",
+      lg: "rounded-xl px-6 py-3 text-lg",
+      xl: "rounded-xl px-10 py-5 text-xl",
+    },
     color: {
       base: ["active:outline-1 active:outline-gray-500"],
       primary: [
@@ -78,13 +85,6 @@ const styles = tv({
         "bg-gray-800 text-gray-50 hover:bg-gray-700 active:bg-gray-700/90",
         "dark:bg-gray-800 dark:hover:bg-gray-900 dark:active:bg-gray-900/80",
       ],
-    },
-    size: {
-      xs: "rounded-sm px-2 py-1 text-xs",
-      sm: "rounded-md px-3 py-1.5 text-sm",
-      md: "rounded-lg px-4 py-2 text-base",
-      lg: "rounded-xl px-6 py-3 text-lg",
-      xl: "rounded-xl px-10 py-5 text-xl",
     },
   },
 });

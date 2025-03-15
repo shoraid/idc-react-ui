@@ -6,7 +6,7 @@ const Card = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => {
     <div
       className={twMerge(
         [
-          "relative flex flex-col",
+          "relative flex w-full flex-col",
           "rounded-lg border border-gray-300 bg-white text-wrap text-gray-900",
           "dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100",
         ],
